@@ -15,7 +15,7 @@ export class Amort extends Component {
 
     render() {
         return (
-        <div>
+        <div id='amortRoot'>
             <Form>
                  <FormGroup>
                     <ControlLabel>Add to Loan</ControlLabel>
