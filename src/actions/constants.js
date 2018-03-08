@@ -1,0 +1,1 @@
+export const ADD_TO_BALANCE = 'ADD_TO_BALANCE';
