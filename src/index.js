@@ -8,7 +8,9 @@ import amortizationReducer from './reducers/amortizationReducer';
 import {Provider} from 'react-redux';
 
 //TODO: change to use a root reducer
-ReactDOM.render(<Provider store={createStore(amortizationReducer)}><Amort /></Provider>, 
-    document.getElementById('root')
-);
+console.log('setting up store');
+const Root = () => {
+  return <Provider store={createStore(amortizationReducer)}><Amort /></Provider>
+}
+ReactDOM.render(Root(), document.getElementById('root'));
 registerServiceWorker();
