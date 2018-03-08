@@ -4,35 +4,42 @@ import { connect } from 'react-redux';
 import { addToBalance } from './actions/amortizationActions';
 
 export class Amort extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = { term: 360, addAmount: 0 };
+
     }
 
-    updateAddToLoanAmount(event){
+    updateAddToLoanAmount = event => {
       this.setState({ addAmount: event.target.value});
     }
 
     render() {
+        const { addAmount, term } = this.state;
+        const { amount, addToBalance } = this.props;
+
         return (
         <div id='amortRoot'>
             <Form>
                  <FormGroup>
                     <ControlLabel>Add to Loan</ControlLabel>
-                    <FormControl type="text" onChange={this.updateAddToLoanAmount.bind(this)}/>
+                    <FormControl  id="addAmount" type="text" value={addAmount} onChange={this.updateAddToLoanAmount}/>
                 </FormGroup>
 
                 <FormGroup>
                     <ControlLabel>Loan amount</ControlLabel>
-                    <FormControl value={this.props.amount} type="text" />
+                    <FormControl id="loanAmount" value={amount} type="text" />
                 </FormGroup>
 
                  <FormGroup>
                     <ControlLabel>Term</ControlLabel>
-                    <FormControl value={this.state.term} />
+                    <FormControl value={term} readOnly />
                 </FormGroup>
 
-                <Button onClick={() => this.props.addToBalance(this.state.addAmount)}>
+                <Button id="addBtn" onClick={() => {
+                        addToBalance(addAmount);
+                    }
+                }>
                     Select
                 </Button>
             </Form>
@@ -43,4 +50,12 @@ export class Amort extends Component {
 
 const mapStateToProps = (state) => ({amount: state.amount});
 
-export default connect(mapStateToProps,{addToBalance})(Amort);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToBalance(amount) {
+            dispatch( addToBalance(amount) );
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Amort);
