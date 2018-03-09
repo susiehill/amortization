@@ -23,7 +23,12 @@ export class Amort extends Component {
             <Form>
                  <FormGroup>
                     <ControlLabel>Add to Loan</ControlLabel>
-                    <FormControl  id="addAmount" type="text" value={addAmount} onChange={this.updateAddToLoanAmount}/>
+                    <FormControl
+                        id="addAmountFormControl"
+                        type="text"
+                        value={addAmount}
+                        onChange={this.updateAddToLoanAmount}
+                    />
                 </FormGroup>
 
                 <FormGroup>
