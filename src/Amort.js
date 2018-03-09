@@ -24,7 +24,7 @@ export class Amort extends Component {
                  <FormGroup>
                     <ControlLabel>Add to Loan</ControlLabel>
                     <FormControl
-                        id="addAmountFormControl"
+                        ref="addAmount"
                         type="text"
                         value={addAmount}
                         onChange={this.updateAddToLoanAmount}
