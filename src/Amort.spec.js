@@ -1,9 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallowWithStore } from 'enzyme-redux';
+import { createMockStore } from 'redux-test-utils';
 import Amort from './Amort';
 
 describe('An Amort component', () => {
-  const component = shallow(<Amort />);
+  const component = shallowWithStore(<Amort />, createMockStore({amount: 0}));
   it('renders', () => {
     expect(component.find('#amortRoot')).toHaveLength(1);
   });
